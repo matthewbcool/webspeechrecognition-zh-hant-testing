@@ -16,20 +16,12 @@ body {
 }
 
 h1,
+h2,
 p {
   font-family: sans-serif;
   text-align: center;
-  padding: 20px;
-}
-
-div {
-  height: 100px;
-  overflow: auto;
-  position: absolute;
-  bottom: 0px;
-  right: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0;
+  color: #222;
 }
 
 ul {
@@ -45,7 +37,24 @@ ul {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  height: 300px;
   font-size: 2rem;
   justify-content: space-between;
+}
+
+.colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2rem;
+  color: #eee;
+}
+
+@media (max-width: 700px) {
+  .colors {
+    flex-direction: column;
+    height: 400px;
+  }
+  span {
+    text-align: center;
+  }
 }

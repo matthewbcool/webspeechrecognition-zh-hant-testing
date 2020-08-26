@@ -6,7 +6,7 @@ var SpeechRecognitionEvent =
 var colors = [
   ['black', '黑色'],
   ['blue', '藍色'],
-  ['brown', '棕色'],
+  ['brown', '咖啡色'],
   ['green', '綠色'],
   ['pink', '粉紅色'],
   ['purple', '紫色'],
@@ -21,7 +21,7 @@ const colorMap = {
   橙色: 'orange',
   綠色: 'green',
   白色: 'white',
-  棕色: 'brown',
+  咖啡色: 'brown',
   黑色: 'black',
   黃色: 'yellow',
   紫色: 'purple',
@@ -43,14 +43,16 @@ recognition.maxAlternatives = 1
 var diagnostic = document.querySelector('.output')
 var bg = document.querySelector('html')
 var hints = document.querySelector('.hints')
+var colorContainer = document.querySelector('.colors')
 
 var colorHTML = ''
 colors.forEach(function (v, i, a) {
   colorHTML +=
     '<span style="background-color:' + v[0] + ';"> ' + v[0] + ' </span>'
 })
-hints.innerHTML =
-  'How many of these colors can you say in Mandarin? ' + colorHTML
+hints.innerHTML = 'How many of these colors can you say in Mandarin? '
+
+colorContainer.innerHTML = colorHTML
 
 document.body.onclick = function () {
   recognition.start()
@@ -67,7 +69,7 @@ recognition.onresult = function (event) {
   // The second [0] returns the SpeechRecognitionAlternative at position 0.
   // We then return the transcript property of the SpeechRecognitionAlternative object
   var color = event.results[0][0].transcript
-  diagnostic.textContent = 'Result received: ' + color + '.'
+  hints.textContent = 'Result received: ' + color + '.'
   color = color.toString()
 
   bg.style.backgroundColor = colorMap[color]
